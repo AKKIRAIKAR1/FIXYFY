@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Service List</title>
+    <link rel="stylesheet" type="text/css" href="serviceList.css">
+
+</head>
+<body>
+    <h1>Available Services</h1>
+    <ul>
+        {% for service in services %}
+            <li>
+                <strong>{{ service.name }}</strong><br>
+                {{ service.description }}<br>
+                Price: ${{ service.price }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

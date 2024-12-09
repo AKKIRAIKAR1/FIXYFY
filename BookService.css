@@ -1,0 +1,83 @@
+/* Booking Container */
+body{
+    background: linear-gradient(135deg, #e5e5eb, #81d4fa); /* Subtle blue gradient */;
+}
+.booking-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e5e5eb, #81d4fa); /* Subtle blue gradient */ /* Light background for the page */
+    /* background-image: url('BookService.jpg'); Path to your image */
+    background-size:cover; /* Ensures the image covers the entire section */
+    background-position: center center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-attachment: fixed; /* Makes the background fixed */
+
+}
+
+/* Booking Box */
+.booking-box {
+    background-color: #328fae;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-bottom: 4%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    
+}
+
+.booking-box h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #f3f3f5; /* Fixyfy Blue */
+}
+
+
+.form-group{
+    margin-bottom: 15px;
+    width: 580px;
+}
+
+.form-group1{
+    margin-bottom: 15px;
+    width: 600px;
+}
+
+.form-group label,.form-group1 label {
+    font-size: 16px;
+    width: 580px;
+    margin-bottom: 5px;
+    display: block;
+    color: #fafafa;
+}
+.form-group1 input,.form-group input,
+.form-group1 select,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.book-btn {
+    width: 100%;
+    padding: 12px;
+    
+    background-color: #ffb72b; /* Fixyfy Yellow */
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.book-btn:hover {
+    background-color: #a6f12e; /* green on hover */
+}
