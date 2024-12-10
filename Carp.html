@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Carpenter Services</title>
+    <link rel="stylesheet" href="Elec.css">
+</head>
+<body>
+
+    <div class="service-container">
+        <h1>Select Your Service</h1>
+        <div class="service-cards">
+            <!-- Service Option 1 -->
+            <div class="service-card">
+                <img src="WoodenFurniture.jpg" alt="Wooden Furniture">
+                <div class="service-info">
+                    <h2>Custom Wooden Furniture</h2>
+                    <p>Get bespoke furniture pieces designed and crafted for your home.</p>
+                    <span class="price">₹1500</span>
+                    <button class="add-to-cart" data-service="Custom Wooden Furniture" data-price="1500">Add to Cart</button>
+                </div>
+            </div>
+            <!-- Service Option 2 -->
+            <div class="service-card">
+                <img src="CabinetMaking.jpg" alt="Cabinet Making">
+                <div class="service-info">
+                    <h2>Cabinet Making</h2>
+                    <p>High-quality, custom cabinets for your kitchen or office space.</p>
+                    <span class="price">₹2500</span>
+                    <button class="add-to-cart" data-service="Cabinet Making" data-price="2500">Add to Cart</button>
+                </div>
+            </div>
+            <!-- Service Option 3 -->
+            <div class="service-card">
+                <img src="WoodenDeck.jpg" alt="Wooden Deck">
+                <div class="service-info">
+                    <h2>Wooden Deck Construction</h2>
+                    <p>Transform your outdoors with a beautifully crafted wooden deck.</p>
+                    <span class="price">₹3500</span>
+                    <button class="add-to-cart" data-service="Wooden Deck Construction" data-price="3500">Add to Cart</button>
+                </div>
+            </div>
+            <!-- Service Option 4 -->
+            <div class="service-card">
+                <img src="DoorRepair.jpg" alt="Door Repair">
+                <div class="service-info">
+                    <h2>Door Repair & Installation</h2>
+                    <p>Efficient door repair and installation services for your home or office.</p>
+                    <span class="price">₹1200</span>
+                    <button class="add-to-cart" data-service="Door Repair & Installation" data-price="1200">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-container">
+        <h2>Your Cart</h2>
+        <div class="cart-items" id="cart-items">
+            <!-- Dynamically added cart items will appear here -->
+        </div>
+        <div class="cart-total">
+            <h3>Total: ₹<span id="total-price">0</span></h3>
+            <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript code for adding/removing items from the cart
+
+        // Select the "Add to Cart" buttons and the cart container
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const totalPriceElement = document.getElementById('total-price');
+        let totalPrice = 0;
+
+        // Store cart items in a map to track their counts
+        let cartItems = {};
+
+        // Function to update the total price
+        function updateTotalPrice() {
+            totalPriceElement.textContent = totalPrice;
+        }
+
+        // Function to update cart UI based on cart items
+        function updateCartUI() {
+            cartItemsContainer.innerHTML = ''; // Clear current cart items
+            totalPrice = 0; // Reset total price
+            for (let service in cartItems) {
+                const count = cartItems[service];
+                const price = parseInt(document.querySelector(`[data-service="${service}"]`).getAttribute('data-price'));
+
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `
+                    <h3>${service} x<span class="quantity">${count}</span></h3>
+                    <p>₹${price * count}</p>
+                    <button class="remove-item">Remove</button>
+                    <div class="quantity-control">
+                        <button class="decrease-quantity">-</button>
+                        <button class="increase-quantity">+</button>
+                    </div>
+                `;
+
+                cartItemsContainer.appendChild(cartItem);
+
+                // Update the total price
+                totalPrice += price * count;
+
+                // Add event listener to remove button
+                cartItem.querySelector('.remove-item').addEventListener('click', () => {
+                    totalPrice -= price * count; // Subtract price when removed
+                    delete cartItems[service]; // Remove item from cart
+                    updateCartUI(); // Update cart UI after removal
+                    updateTotalPrice(); // Update total price
+                });
+
+                // Add event listeners for quantity change buttons
+                cartItem.querySelector('.decrease-quantity').addEventListener('click', () => {
+                    if (cartItems[service] > 1) {
+                        cartItems[service] -= 1; // Decrease quantity
+                        updateCartUI(); // Update cart UI after change
+                    }
+                });
+
+                cartItem.querySelector('.increase-quantity').addEventListener('click', () => {
+                    cartItems[service] += 1; // Increase quantity
+                    updateCartUI(); // Update cart UI after change
+                });
+            }
+
+            // Update the total price
+            updateTotalPrice();
+        }
+
+        // Event listeners for each "Add to Cart" button
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const service = button.getAttribute('data-service');
+                const price = parseInt(button.getAttribute('data-price'));
+
+                // Check if item already exists in the cart
+                if (cartItems[service]) {
+                    cartItems[service] += 1; // Increment count if already in cart
+                } else {
+                    cartItems[service] = 1; // Add new item with count 1
+                }
+
+                // Recalculate the total price and update UI
+                updateCartUI();
+            });
+        });
+    </script>
+
+</body>
+</html>
