@@ -3,17 +3,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  /* Body styling */
-  body {
+}
+
+/* Body styling */
+body {
     font-family: 'Arial', sans-serif;
     background-color: #b9ccc9;
     margin: 0;
-  }
-  
-  /* Navigation Bar Styling */
-  .navbar {
+}
+
+/* Navigation Bar Styling */
+.navbar {
     display: flex;
     height: 80px;
     justify-content: space-between;
@@ -21,91 +21,101 @@
     background-color: #e5e5eb; /* Urban Company Blue */
     padding: 10px 30px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .navbar .logo a {
+    flex-wrap: wrap;
+}
+
+/* Logo */
+.navbar .logo a {
     color: #121c74;
     font-size: 24px;
     font-weight: 700;
     text-decoration: none;
-    /* background-image: fill;
-    background-image: url("UrbanClogo.jpg"); */
-  }
+}
 
-  .search-container {
+/* Search Bar */
+.search {
     display: flex;
-    align-items: center;
     justify-content: center;
-    margin-top: 50px;
-  }
-  
-  .search-bar {
-    width: 500px;
+    flex-grow: 1;
+}
+
+.search-bar {
+    width: 300px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 20px 0 0 20px;
     font-size: 16px;
-  }
-  
-  .search-button {
+}
+
+.search-button {
     padding: 10px 15px;
     border: 1px solid #ccc;
-    background-color: #bccedf;
+    background-color: #4CAF50;
     color: white;
     font-size: 16px;
     cursor: pointer;
     border-radius: 0 20px 20px 0;
-  }
-  
-  .search-button:hover {
-    background-color: #a2accb;
-  }
+}
 
-  
-  .Nav-links{
-    display: flex;
-    text-align: center;
-  }
-  
-  .Nav-links {
-    margin-left: 5px;
-    margin-right: 5px;
-  }
-  
-  .Nav-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 500;
-    transition: color 0.3s ease;
-  }
-  
-  .Nav-links a:hover {
-    color: #ffb72b; /* Hover color for links */
-  }
-  
-  /* Call to Action Button */
-  .cta-btn {
+.search-button:hover {
+    background-color: #121c74;
+    transition: background-color 0.9s ease;
+}
+
+/* Call to Action Button */
+.cta-btn {
     padding: 8px 20px;
-    background-color: #ffb72b; /* Urban Company yellow */
+    background-color: #121c74; 
     color: #fff;
     text-decoration: none;
     font-size: 16px;
     border-radius: 4px;
     font-weight: 600;
-    transition: background-color 0.3s ease;
-  }
-  
-  .cta-btn:hover {
-    background-color: #a6f12e; /* Darker yellow on hover */
-  }
-  
-  .cta {
+    transition: background-color 0.6s ease;
+}
+
+.cta-btn:hover {
+    background-color: #4CAF50; /* Darker yellow on hover */
+}
+
+/* Cta section */
+.cta {
     display: flex;
     justify-content: flex-end;
-  }
+    flex-shrink: 0;
+}
 
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
 
+    .search {
+        width: 100%;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .search-bar {
+        width: 70%;
+    }
+
+    .search-button {
+        width: 30%;
+    }
+
+    .cta {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .cta-btn {
+        width: auto;
+        margin-top: 10px;
+    }
+}
 
 
 /* Heading line in main page */
@@ -586,10 +596,6 @@
 
 
 
-
-
-
-
 /* Footer */
 /* Footer Container */
 .footer-container {
@@ -659,8 +665,8 @@
 }
 
 .social-icons img {
-  width: 24px;
-  height: 24px;
+  width: 34px;
+  height: 34px;
   transition: transform 0.3s ease;
 }
 
@@ -705,4 +711,5 @@
       margin-top: 10px;
     }
   }
+  
   
